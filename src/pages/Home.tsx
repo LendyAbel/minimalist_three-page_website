@@ -22,7 +22,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="flex min-h-screen items-center justify-center bg-white">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-          <h1 className="mb-8 text-5xl leading-tight text-gray-900 md:text-7xl">
+          <h1 className="mb-8 text-5xl leading-tight font-light text-gray-900 md:text-7xl">
             Simple.
             <br />
             <span className="font-normal">Beautiful.</span>
