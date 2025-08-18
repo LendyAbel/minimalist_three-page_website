@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 const navigationList = [
   { label: "Home", to: "/" },
@@ -28,9 +29,18 @@ const activeIndicator = {
 
 const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   return (
     <>
-      <nav className="fixed top-0 right-0 left-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
+      <nav className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
@@ -72,23 +82,46 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
             </div>
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button className="text-gray-600 transition-colors hover:text-gray-900">
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+              <button
+                onClick={toggleMenu}
+                className="text-gray-600 hover:text-gray-900"
+              >
+                {!isOpen ? (
+                  <IoMdMenu className="h-6 w-6" />
+                ) : (
+                  <IoMdClose className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="border-t border-gray-200 bg-white/50 backdrop-blur-sm md:hidden"
+              >
+                <div className="flex flex-col space-y-4 px-6 py-4">
+                  {navigationList.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={closeMenu}
+                      className={`text-right font-medium duration-200 ${
+                        location.pathname === item.to
+                          ? "text-gray-900"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
       <main className="pt-20">{children}</main>
