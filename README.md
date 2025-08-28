@@ -1,69 +1,49 @@
-# React + TypeScript + Vite
+# Minimalist Three-Page Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vista previa de la aplicación:
 
-Currently, two official plugins are available:
+![Vista previa de la aplicación](./preview/minimalist_three-page_website.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto es una aplicación web minimalista con tres páginas principales, creada como boceto base para mostrar en repositorios de GitHub y portfolios personales. Sirve como plantilla inicial para desarrollar sitios web modernos y responsivos utilizando React, TypeScript y Vite.
 
-## Expanding the ESLint configuration
+## Características
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Diseño minimalista**: Interfaz limpia y sencilla para destacar la estructura del sitio.
+- **Tres páginas principales**:
+  - **Inicio**: Presentación o bienvenida.
+  - **Sobre mí / Información**: Espacio para detalles personales o de proyecto.
+  - **Contacto / Formulario**: Ejemplo básico de interacción con el usuario.
+- **Navegación entre páginas** sin recargar la aplicación.
+- **Código estructurado y fácil de modificar** para adaptarlo a distintos propósitos.
+- **Configuración rápida** con Vite para desarrollo y despliegue.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tecnologías utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Instalación y ejecución
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/LendyAbel/minimalist_three-page_website.git
+   cd minimalist_three-page_website
+   ```
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+3. Ejecuta la aplicación en modo desarrollo:
+   ```sh
+   npm run dev
+   ```
+4. Abre [http://localhost:5173](http://localhost:5173) en tu navegador para ver el resultado.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Propósito
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Este boceto está pensado como punto de partida para proyectos personales, pruebas de concepto, portfolios y presentaciones en repositorios GitHub. Puedes usarlo, modificarlo y ampliarlo para tus propios fines.
+
+---
+
+¿Quieres personalizar la estructura o los estilos? Simplemente modifica los componentes en la carpeta `src` para adaptarlos a tus necesidades.
